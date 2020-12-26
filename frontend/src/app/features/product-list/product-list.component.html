@@ -1,7 +1,7 @@
 <div class="main-content">
 	<h1>Available products</h1>
 	<div class="products-table-container">
-		<table mat-table [dataSource]="data" class="products-table" matSort matSortActive="name"
+		<table mat-table [dataSource]="products$ | async" class="products-table" matSort matSortActive="name"
 			   matSortDisableClear matSortDirection="desc">
 			<!-- Name Column -->
 			<ng-container matColumnDef="name">

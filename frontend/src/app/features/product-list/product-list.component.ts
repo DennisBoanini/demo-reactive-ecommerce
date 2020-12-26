@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from './models/product.model';
+import { ProductService } from './services/product.service';
+import { Observable } from 'rxjs';
 
 @Component({
 	selector: 'demo-product-list',
@@ -9,20 +11,10 @@ import { Product } from './models/product.model';
 export class ProductListComponent implements OnInit {
 
 	public readonly displayedColumns: string[] = ['name', 'description', 'price', 'apply_discount', 'actions'];
-	public readonly data: Array<Product> = [];
+	public readonly products$: Observable<Product[]>;
 
-	constructor() {
-		for (let i = 0; i < 20; i++) {
-			const product: Product = {
-				id: i,
-				name: `Product name ${i}`,
-				description: `Product description ${i}`,
-				price: i,
-				isDiscountApplied: i % 2 === 0
-			};
-
-			this.data.push(product);
-		}
+	constructor(productService: ProductService) {
+		this.products$ = productService.getAllProducts();
 	}
 
 	public ngOnInit(): void {

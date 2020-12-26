@@ -10,6 +10,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { ProductService } from './services/product.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -17,12 +19,16 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 	imports: [
 		CommonModule,
 		ProductListRoutingModule,
+		HttpClientModule,
 		MatCardModule,
 		MatTableModule,
 		MatPaginatorModule,
 		MatSortModule,
 		MatIconModule,
 		MatCheckboxModule
+	],
+	providers: [
+		ProductService
 	]
 })
 export class ProductListModule {
