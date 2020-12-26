@@ -7,18 +7,21 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 
 @NgModule({
 	declarations: [
 		AppComponent
 	],
 	imports: [
-		BrowserModule.withServerTransition({ appId: 'serverApp' }),
+		BrowserModule,
 		AppRoutingModule,
 		BrowserAnimationsModule,
 		MatToolbarModule,
 		MatIconModule,
-		RouterModule
+		RouterModule,
+		StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
 	],
 	providers: [],
 	bootstrap: [AppComponent]
