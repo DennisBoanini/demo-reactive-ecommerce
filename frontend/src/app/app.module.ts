@@ -6,17 +6,19 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
 	declarations: [
 		AppComponent
 	],
 	imports: [
-		BrowserModule,
+		BrowserModule.withServerTransition({ appId: 'serverApp' }),
 		AppRoutingModule,
 		BrowserAnimationsModule,
 		MatToolbarModule,
-		MatIconModule
+		MatIconModule,
+		RouterModule
 	],
 	providers: [],
 	bootstrap: [AppComponent]

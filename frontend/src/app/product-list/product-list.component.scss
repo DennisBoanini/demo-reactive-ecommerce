@@ -1,0 +1,19 @@
+.products-table-container {
+	//overflow: auto;
+
+	.products-table {
+		.mat-column-apply_discount {
+			max-width: 40px;
+			text-align: center;
+		}
+
+		.mat-column-actions {
+			max-width: 20px;
+			text-align: right;
+
+			mat-icon:not(:first-child) {
+				margin-left: 20px;
+			}
+		}
+	}
+}
