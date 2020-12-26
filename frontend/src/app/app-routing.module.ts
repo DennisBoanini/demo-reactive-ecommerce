@@ -11,7 +11,7 @@ const routes: Routes = [
 				pathMatch: 'full'
 			},
 			{
-				path: 'product-list', loadChildren: () => import('./product-list/product-list.module').then(m => m.ProductListModule)
+				path: 'product-list', loadChildren: () => import('./features/product-list/product-list.module').then(m => m.ProductListModule)
 			}
 		]
 	}
