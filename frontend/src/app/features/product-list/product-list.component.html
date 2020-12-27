@@ -45,5 +45,9 @@
 			<tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
 		</table>
 	</div>
-	<mat-paginator [length]="datasource.data.length" [pageSize]="15"></mat-paginator>
+	<mat-paginator class="paginator" [length]="datasource.data.length" [pageSize]="15"></mat-paginator>
+
+	<button mat-fab>
+		<mat-icon>add</mat-icon>
+	</button>
 </div>
