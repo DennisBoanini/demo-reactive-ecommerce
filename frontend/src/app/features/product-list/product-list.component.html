@@ -1,7 +1,7 @@
 <div class="main-content">
 	<h1>Available products</h1>
 	<div class="products-table-container">
-		<table [dataSource]="products$ | async" class="products-table" mat-table matSort matSortActive="name"
+		<table [dataSource]="datasource" class="products-table" mat-table matSort matSortActive="name"
 			   matSortDirection="desc" matSortDisableClear>
 			<!-- Name Column -->
 			<ng-container matColumnDef="name">
@@ -45,6 +45,4 @@
 			<tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
 		</table>
 	</div>
-
-	<mat-paginator [length]="30" [pageSize]="30"></mat-paginator>
 </div>

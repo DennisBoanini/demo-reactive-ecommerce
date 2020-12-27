@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
-import { Product } from './models/product.model';
+import { Component, ViewChild } from '@angular/core';
 import { ProductService } from './services/product.service';
-import { Observable } from 'rxjs';
 import { ProductState } from './store';
-import { select, Store } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import * as ProductActions from './store/product.actions';
 import { getAllProducts } from './store/product.selector';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { tap } from 'rxjs/operators';
 
 @Component({
 	selector: 'demo-product-list',
@@ -15,9 +16,17 @@ import { getAllProducts } from './store/product.selector';
 export class ProductListComponent {
 
 	public readonly displayedColumns: string[] = ['name', 'description', 'price', 'apply_discount', 'actions'];
-	public readonly products$: Observable<Product[]> = this.store$.pipe(select(getAllProducts));
+	public readonly datasource = new MatTableDataSource([]);
 
 	constructor(productService: ProductService, private readonly store$: Store<ProductState>) {
 		this.store$.dispatch(ProductActions.LOAD_PRODUCTS_INIT({error: false, products: []}));
+		this.store$.select(getAllProducts).pipe(
+			tap(products => this.datasource.data = products)
+		).subscribe();
+	}
+
+	@ViewChild(MatSort)
+	public set matSort(sort: MatSort) {
+		this.datasource.sort = sort;
 	}
 }
