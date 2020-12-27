@@ -11,7 +11,7 @@ export class ProductService {
 
 	public getAllProducts(): Observable<Product[]> {
 		const data: Array<Product> = [];
-		for (let i = 0; i < 20; i++) {
+		for (let i = 0; i < 100; i++) {
 			const product: Product = {
 				id: i,
 				name: `Product name ${i}`,
