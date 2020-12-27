@@ -11,10 +11,12 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { PageNotFoundComponent } from './core/components/page-not-found/page-not-found.component';
 
 @NgModule({
 	declarations: [
-		AppComponent
+		AppComponent,
+		PageNotFoundComponent
 	],
 	imports: [
 		BrowserModule,
