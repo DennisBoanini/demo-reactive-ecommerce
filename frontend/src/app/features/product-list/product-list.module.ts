@@ -15,6 +15,7 @@ import { StoreModule } from '@ngrx/store';
 import * as fromProducts from './store';
 import { EffectsModule } from '@ngrx/effects';
 import { ProductEffects } from './store/product.effects';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { ProductEffects } from './store/product.effects';
 		MatIconModule,
 		MatCheckboxModule,
 		StoreModule.forFeature(fromProducts.productsFeatureKey, fromProducts.reducers, {metaReducers: fromProducts.metaReducers}),
-		EffectsModule.forFeature([ProductEffects])
+		EffectsModule.forFeature([ProductEffects]),
+		MatButtonModule
 	],
 	providers: [
 		ProductService
