@@ -1,0 +1,49 @@
+<div class="main-content">
+	<h1>Available products</h1>
+	<div class="products-table-container">
+		<table [dataSource]="datasource" class="products-table" mat-table matSort matSortActive="name"
+			   matSortDirection="desc" matSortDisableClear>
+			<!-- Name Column -->
+			<ng-container matColumnDef="name">
+				<th *matHeaderCellDef mat-header-cell mat-sort-header>Name</th>
+				<td *matCellDef="let row" mat-cell>{{row.name}}</td>
+			</ng-container>
+
+			<!-- Description Column -->
+			<ng-container matColumnDef="description">
+				<th *matHeaderCellDef mat-header-cell mat-sort-header>Description</th>
+				<td *matCellDef="let row" mat-cell>{{row.description}}</td>
+			</ng-container>
+
+			<!-- Price Column -->
+			<ng-container matColumnDef="price">
+				<th *matHeaderCellDef mat-header-cell mat-sort-header>Price</th>
+				<td *matCellDef="let row" mat-cell>{{row.price}}</td>
+			</ng-container>
+
+			<!-- Apply Discount Column -->
+			<ng-container matColumnDef="apply_discount">
+				<th *matHeaderCellDef mat-header-cell mat-sort-header>Discount applied?</th>
+				<td *matCellDef="let row" mat-cell>
+					<mat-icon *ngIf="row.isDiscountApplied; else notApplied">check</mat-icon>
+					<ng-template #notApplied>
+						<mat-icon>close</mat-icon>
+					</ng-template>
+				</td>
+			</ng-container>
+
+			<!-- Actions Column -->
+			<ng-container matColumnDef="actions">
+				<th *matHeaderCellDef mat-header-cell></th>
+				<td *matCellDef="let row" mat-cell>
+					<mat-icon class="clickable">edit</mat-icon>
+					<mat-icon class="clickable">delete</mat-icon>
+				</td>
+			</ng-container>
+
+			<tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+			<tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+		</table>
+	</div>
+	<mat-paginator [length]="datasource.data.length" [pageSize]="15"></mat-paginator>
+</div>

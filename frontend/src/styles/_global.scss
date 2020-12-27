@@ -1,0 +1,30 @@
+.main-content {
+	position: relative;
+	height: 100%;
+	overflow: auto;
+
+	// All fab buttons should be placed in bottom right corner
+	button.mat-fab {
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		margin: 25px;
+	}
+
+	// All tables should be full-width with fixed font-size for columns
+	table {
+		width: 100%;
+
+		th {
+			font-size: 1.05vw;
+		}
+	}
+
+	mat-paginator {
+		font-size: 1.05vw;
+	}
+}
+
+.clickable {
+	cursor: pointer;
+}
