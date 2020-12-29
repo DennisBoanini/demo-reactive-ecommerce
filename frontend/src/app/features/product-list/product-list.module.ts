@@ -14,10 +14,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import * as fromProducts from './store';
 import { EffectsModule } from '@ngrx/effects';
-import { ProductEffects } from './store/product.effects';
+import { ProductEffects } from './store/effects/product.effects';
 import { MatButtonModule } from '@angular/material/button';
 import { UikitModule } from '../../shared/uikit/uikit.module';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ProductDeleteEffects } from './store/effects/product-delete.effects';
 
 
 @NgModule({
@@ -33,7 +34,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 		MatIconModule,
 		MatCheckboxModule,
 		StoreModule.forFeature(fromProducts.productsFeatureKey, fromProducts.reducers, {metaReducers: fromProducts.metaReducers}),
-		EffectsModule.forFeature([ProductEffects]),
+		EffectsModule.forFeature([ProductEffects, ProductDeleteEffects]),
 		MatButtonModule,
 		MatDialogModule,
 		UikitModule

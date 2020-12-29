@@ -1,7 +1,7 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { ProductState } from './index';
+import { productsFeatureKey, ProductState } from '../index';
 
-const getProductState = createFeatureSelector<ProductState>('products');
+const getProductState = createFeatureSelector<ProductState>(productsFeatureKey);
 
 export const getAllProducts = createSelector(
 	getProductState,

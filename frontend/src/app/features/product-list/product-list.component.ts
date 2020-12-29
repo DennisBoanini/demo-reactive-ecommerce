@@ -2,8 +2,9 @@ import { Component, ViewChild } from '@angular/core';
 import { ProductService } from './services/product.service';
 import { ProductState } from './store';
 import { Store } from '@ngrx/store';
-import * as ProductActions from './store/product.actions';
-import { getAllProducts } from './store/product.selector';
+import * as ProductActions from './store/actions/product.actions';
+import * as ProductDeleteActions from './store/actions/product-delete.actions';
+import { getAllProducts } from './store/selector/product.selector';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { filter, tap } from 'rxjs/operators';
@@ -55,7 +56,7 @@ export class ProductListComponent {
 		dialogRef.afterClosed()
 			.pipe(
 				filter(Boolean),
-				tap(() => this.store$.dispatch(ProductActions.DELETE_PRODUCTS_INIT({id: product.id, deleting: true, error: false})))
+				tap(() => this.store$.dispatch(ProductDeleteActions.DELETE_PRODUCTS_INIT({id: product.id, deleting: true, error: false})))
 			).subscribe();
 	}
 }
