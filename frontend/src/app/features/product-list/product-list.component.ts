@@ -55,7 +55,7 @@ export class ProductListComponent {
 		dialogRef.afterClosed()
 			.pipe(
 				filter(Boolean),
-				tap(x => this.store$.dispatch(ProductActions.DELETE_PRODUCTS_INIT({id: product.id, deleting: true, error: false})))
+				tap(() => this.store$.dispatch(ProductActions.DELETE_PRODUCTS_INIT({id: product.id, deleting: true, error: false})))
 			).subscribe();
 	}
 }
