@@ -4,7 +4,6 @@ import { AppState } from './store';
 import { Store } from '@ngrx/store';
 import { isLoading } from './store/loading-spinner/loading-spinner.selector';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
 
 @Component({
 	selector: 'demo-root',
@@ -18,11 +17,10 @@ export class AppComponent implements OnInit {
 	constructor(
 		private readonly router: Router,
 		private readonly store$: Store<AppState>
-		) {
+	) {
 	}
 
 	public ngOnInit(): void {
-		console.log('mimi')
 		this.isLoading$ = this.store$.select(isLoading);
 	}
 

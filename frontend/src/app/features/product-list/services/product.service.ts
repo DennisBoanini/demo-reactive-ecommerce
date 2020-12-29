@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { interval, Observable, of, timer } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Product } from '../models/product.model';
 import { HttpClient } from '@angular/common/http';
-import { debounce, delay, tap, timeout } from 'rxjs/operators';
-import { AppState } from '../../../store';
+import { delay, tap } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
+import { AppState } from '../../../store';
 import * as LoadingSpinnerAction from '../../../store/loading-spinner/loading-spinner.actions';
 
 
