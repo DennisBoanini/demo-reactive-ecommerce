@@ -36,10 +36,11 @@ export class ProductService {
 	}
 
 	public delete(id: number): Observable<void> {
+		this.store$.dispatch(LoadingSpinnerAction.LOADING_SPINNER_START());
 		return of(void 0)
 			.pipe(
 				delay(3000),
-				tap(() => console.log('Should delete product with id', id))
+				tap(() => this.store$.dispatch(LoadingSpinnerAction.LOADING_SPINNER_STOP()))
 			);
 	}
 }
