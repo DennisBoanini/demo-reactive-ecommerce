@@ -25,4 +25,10 @@ export class ProductService {
 
 		return of(data);
 	}
+
+	public delete(id: number): Observable<void> {
+		console.log('Delete products with id ', id);
+
+		return of(void 0);
+	}
 }

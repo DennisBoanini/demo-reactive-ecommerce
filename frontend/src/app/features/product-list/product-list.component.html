@@ -37,7 +37,7 @@
 				<th *matHeaderCellDef mat-header-cell></th>
 				<td *matCellDef="let row" mat-cell>
 					<mat-icon class="clickable">edit</mat-icon>
-					<mat-icon class="clickable">delete</mat-icon>
+					<mat-icon class="clickable" (click)="deleteProduct(row)">delete</mat-icon>
 				</td>
 			</ng-container>
 

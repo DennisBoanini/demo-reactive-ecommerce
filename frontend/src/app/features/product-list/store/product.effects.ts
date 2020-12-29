@@ -23,6 +23,19 @@ export class ProductEffects {
 		)
 	);
 
+	@Effect({dispatch: false})
+	deleteProduct$ = createEffect(() => this.actions$
+		.pipe(
+			ofType(ProductActions.DELETE_PRODUCTS_INIT),
+			exhaustMap((action) => this.productService.delete(action.id)
+				.pipe(
+					map(() => ProductActions.DELETE_PRODUCTS_SUCCESS({ deleting: false, error: false })),
+					catchError(() => of(ProductActions.DELETE_PRODUCTS_ERROR({ deleting: false, error: true })))
+				)
+			)
+		)
+	);
+
 	constructor(
 		private readonly actions$: Actions,
 		private readonly store$: Store<ProductState>,
