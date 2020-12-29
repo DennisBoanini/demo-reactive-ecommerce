@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { interval, Observable, of, timer } from 'rxjs';
 import { Product } from '../models/product.model';
 import { HttpClient } from '@angular/common/http';
+import { debounce, delay, tap, timeout } from 'rxjs/operators';
 
 @Injectable()
 export class ProductService {
@@ -27,8 +28,10 @@ export class ProductService {
 	}
 
 	public delete(id: number): Observable<void> {
-		console.log('Delete products with id ', id);
-
-		return of(void 0);
+		return of(void 0)
+			.pipe(
+				delay(3000),
+				tap(() => console.log('Should delete product with id', id))
+			);
 	}
 }
