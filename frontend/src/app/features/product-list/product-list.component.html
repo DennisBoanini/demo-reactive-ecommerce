@@ -23,11 +23,11 @@
 
 			<!-- Apply Discount Column -->
 			<ng-container matColumnDef="apply_discount">
-				<th *matHeaderCellDef mat-header-cell mat-sort-header>Discount applied?</th>
+				<th *matHeaderCellDef mat-header-cell mat-sort-header>Discount</th>
 				<td *matCellDef="let row" mat-cell>
-					<mat-icon *ngIf="row.isDiscountApplied; else notApplied">check</mat-icon>
+					<mat-icon *ngIf="row.discount; else notApplied">check</mat-icon>
 					<ng-template #notApplied>
-						<mat-icon>close</mat-icon>
+						<button mat-stroked-button color="primary" (click)="addDiscount(row)">Add discount</button>
 					</ng-template>
 				</td>
 			</ng-container>

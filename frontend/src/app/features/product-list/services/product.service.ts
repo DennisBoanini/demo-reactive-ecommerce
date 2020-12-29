@@ -23,7 +23,7 @@ export class ProductService {
 				name: `Product name ${i}`,
 				description: `Product description ${i}`,
 				price: i,
-				isDiscountApplied: i % 2 === 0
+				discount: i % 2 === 0 ? 15 : null
 			};
 
 			data.push(product);

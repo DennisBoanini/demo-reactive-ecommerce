@@ -19,10 +19,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { UikitModule } from '../../shared/uikit/uikit.module';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ProductDeleteEffects } from './store/effects/product-delete.effects';
+import { ApplyDiscountComponent } from './components/apply-discount/apply-discount.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
-	declarations: [ProductListComponent],
+	declarations: [ProductListComponent, ApplyDiscountComponent],
 	imports: [
 		CommonModule,
 		ProductListRoutingModule,
@@ -37,7 +41,10 @@ import { ProductDeleteEffects } from './store/effects/product-delete.effects';
 		EffectsModule.forFeature([ProductEffects, ProductDeleteEffects]),
 		MatButtonModule,
 		MatDialogModule,
-		UikitModule
+		UikitModule,
+		MatFormFieldModule,
+		MatInputModule,
+		ReactiveFormsModule
 	],
 	providers: [
 		ProductService

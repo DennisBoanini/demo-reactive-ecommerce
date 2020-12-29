@@ -1,0 +1,12 @@
+<h2 mat-dialog-title>Add discount</h2>
+<mat-dialog-content>
+	<p>Please insert the amount (in %) of the discount to apply to product <b>{{product.name}}</b></p>
+	<mat-form-field class="full-width" [formGroup]="discountForm">
+		<input matInput placeholder="Discount" type="number" formControlName="discount"/>
+		<mat-icon matSuffix></mat-icon>
+	</mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions class="align-end">
+	<button mat-button mat-dialog-close>Cancel</button>
+	<button mat-button (click)="save()" [disabled]="!discountForm.valid">Save</button>
+</mat-dialog-actions>
