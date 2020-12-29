@@ -12,11 +12,15 @@ import { environment } from '../environments/environment';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { PageNotFoundComponent } from './core/components/page-not-found/page-not-found.component';
+import { LoadingComponent } from './core/components/loading/loading.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { metaReducers, ROOT_REDUCERS } from './store';
 
 @NgModule({
 	declarations: [
 		AppComponent,
-		PageNotFoundComponent
+		PageNotFoundComponent,
+		LoadingComponent
 	],
 	imports: [
 		BrowserModule,
@@ -24,8 +28,9 @@ import { PageNotFoundComponent } from './core/components/page-not-found/page-not
 		BrowserAnimationsModule,
 		MatToolbarModule,
 		MatIconModule,
+		MatProgressSpinnerModule,
 		RouterModule,
-		StoreModule.forRoot({}),
+		StoreModule.forRoot(ROOT_REDUCERS, { metaReducers }),
 		EffectsModule.forRoot([]),
 		StoreDevtoolsModule.instrument(),
 		!environment.production ? StoreDevtoolsModule.instrument() : [],

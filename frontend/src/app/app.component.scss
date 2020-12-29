@@ -11,3 +11,8 @@
 	height: calc(100% - 90px);
 	overflow: hidden;
 }
+
+.loading {
+	pointer-events: none;
+	opacity: 0.2;
+}

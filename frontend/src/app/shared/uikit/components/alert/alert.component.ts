@@ -9,9 +9,7 @@ import { AlertData } from '../../models/alert-data.model';
 })
 export class AlertComponent implements OnInit {
 
-	constructor(@Inject(MAT_DIALOG_DATA) public data: AlertData) {
-		console.log(data)
-	}
+	constructor(@Inject(MAT_DIALOG_DATA) public data: AlertData) {}
 
 	ngOnInit(): void {
 	}

@@ -10,9 +10,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { filter, tap } from 'rxjs/operators';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
-import { AlertComponent } from '../../shared/uikit/components/alert/alert.component';
 import { AlertData } from '../../shared/uikit/models/alert-data.model';
 import { Product } from './models/product.model';
+import { AlertComponent } from '../../shared/uikit/components/alert/alert.component';
 
 @Component({
 	selector: 'demo-product-list',
