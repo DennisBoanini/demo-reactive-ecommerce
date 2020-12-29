@@ -11,7 +11,6 @@ import { Observable } from 'rxjs';
 	styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-	title = 'frontend';
 	public isLoading$: Observable<boolean>;
 
 	constructor(
