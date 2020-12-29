@@ -3,6 +3,7 @@
 	<span class="spacer"></span>
 </mat-toolbar>
 
-<div class="app-container">
+<demo-loading [isLoading]="isLoading$ | async"></demo-loading>
+<div class="app-container" [class.loading]="isLoading$ | async">
 	<router-outlet></router-outlet>
 </div>
