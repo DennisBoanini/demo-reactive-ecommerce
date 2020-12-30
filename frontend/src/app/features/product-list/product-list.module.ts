@@ -23,6 +23,7 @@ import { ApplyDiscountComponent } from './components/apply-discount/apply-discou
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ProductUpdateEffects } from './store/effects/product-update.effects';
 
 
 @NgModule({
@@ -38,7 +39,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 		MatIconModule,
 		MatCheckboxModule,
 		StoreModule.forFeature(fromProducts.productsFeatureKey, fromProducts.reducers, {metaReducers: fromProducts.metaReducers}),
-		EffectsModule.forFeature([ProductEffects, ProductDeleteEffects]),
+		EffectsModule.forFeature([ProductEffects, ProductDeleteEffects, ProductUpdateEffects]),
 		MatButtonModule,
 		MatDialogModule,
 		UikitModule,

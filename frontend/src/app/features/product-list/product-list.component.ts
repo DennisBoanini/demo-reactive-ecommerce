@@ -14,7 +14,8 @@ import { AlertData } from '../../shared/uikit/models/alert-data.model';
 import { Product } from './models/product.model';
 import { AlertComponent } from '../../shared/uikit/components/alert/alert.component';
 import { ApplyDiscountComponent } from './components/apply-discount/apply-discount.component';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
+import * as ProductUpdateActions from '../product-list/store/actions/product-update.actions';
 
 @Component({
 	selector: 'demo-product-list',
@@ -69,7 +70,7 @@ export class ProductListComponent {
 		});
 
 		dialogRef.afterClosed().pipe(
-			tap(x => console.log(x))
+			tap(discountApplied => this.store$.dispatch(ProductUpdateActions.UPDATE_PRODUCT_INIT({ productId: product.id, discountApplied })))
 		).subscribe();
 	}
 }
