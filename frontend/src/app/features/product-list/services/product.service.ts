@@ -22,7 +22,7 @@ export class ProductService {
 				id: i,
 				name: `Product name ${i}`,
 				description: `Product description ${i}`,
-				price: i,
+				originalPrice: i,
 				discount: i % 2 === 0 ? 15 : null
 			};
 

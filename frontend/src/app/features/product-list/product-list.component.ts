@@ -23,7 +23,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class ProductListComponent {
 
-	public readonly displayedColumns: string[] = ['name', 'description', 'price', 'apply_discount', 'actions'];
+	public readonly displayedColumns: string[] = ['name', 'description', 'price', 'discount', 'actions'];
 	public readonly datasource = new MatTableDataSource([]);
 	constructor(
 		productService: ProductService,

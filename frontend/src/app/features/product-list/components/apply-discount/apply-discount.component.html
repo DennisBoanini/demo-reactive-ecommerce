@@ -5,6 +5,13 @@
 		<input matInput placeholder="Discount" type="number" formControlName="discount"/>
 		<mat-icon matSuffix></mat-icon>
 	</mat-form-field>
+
+	<div class="discount-container" *ngIf="discountForm.get('discount').value as discount">
+		<mat-label><b>The new price is: </b></mat-label>
+		<b [class.strike]="discount">{{ product.originalPrice }}</b>
+		<mat-icon>arrow_right_alt</mat-icon>
+		<b>{{ product.originalPrice - (product.originalPrice * discount) / 100 }}</b>
+	</div>
 </mat-dialog-content>
 <mat-dialog-actions class="align-end">
 	<button mat-button mat-dialog-close>Cancel</button>
