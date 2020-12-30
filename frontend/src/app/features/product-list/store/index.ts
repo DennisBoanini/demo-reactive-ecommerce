@@ -1,17 +1,26 @@
 import { ActionReducerMap, MetaReducer } from '@ngrx/store';
 import { environment } from '../../../../environments/environment';
-import { productDeleteReducer, ProductDeleteState, productReducer, ProductsState } from './reducers';
+import {
+	productDeleteReducer,
+	ProductDeleteState,
+	productReducer,
+	ProductsState,
+	productUpdateReducer,
+	ProductUpdateState
+} from './reducers';
 
 export const productsFeatureKey = 'products';
 
 export interface ProductState {
 	products: ProductsState;
 	productDelete: ProductDeleteState;
+	productUpdate: ProductUpdateState;
 }
 
 export const reducers: ActionReducerMap<ProductState> = {
 	products: productReducer,
-	productDelete: productDeleteReducer
+	productDelete: productDeleteReducer,
+	productUpdate: productUpdateReducer
 };
 
 

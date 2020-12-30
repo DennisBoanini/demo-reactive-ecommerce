@@ -13,6 +13,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { AlertData } from '../../shared/uikit/models/alert-data.model';
 import { Product } from './models/product.model';
 import { AlertComponent } from '../../shared/uikit/components/alert/alert.component';
+import { ApplyDiscountComponent } from './components/apply-discount/apply-discount.component';
+import { FormBuilder } from '@angular/forms';
+import * as ProductUpdateActions from '../product-list/store/actions/product-update.actions';
 
 @Component({
 	selector: 'demo-product-list',
@@ -21,12 +24,13 @@ import { AlertComponent } from '../../shared/uikit/components/alert/alert.compon
 })
 export class ProductListComponent {
 
-	public readonly displayedColumns: string[] = ['name', 'description', 'price', 'apply_discount', 'actions'];
+	public readonly displayedColumns: string[] = ['name', 'description', 'price', 'discount', 'actions'];
 	public readonly datasource = new MatTableDataSource([]);
 	constructor(
 		productService: ProductService,
 		private readonly store$: Store<ProductState>,
-		private readonly dialog: MatDialog) {
+		private readonly dialog: MatDialog,
+		private readonly formBuilder: FormBuilder) {
 
 		this.store$.dispatch(ProductActions.LOAD_PRODUCTS_INIT({error: false, products: []}));
 		this.store$.select(getAllProducts).pipe(
@@ -58,5 +62,15 @@ export class ProductListComponent {
 				filter(Boolean),
 				tap(() => this.store$.dispatch(ProductDeleteActions.DELETE_PRODUCTS_INIT({id: product.id, deleting: true, error: false})))
 			).subscribe();
+	}
+
+	public addDiscount(product: Product): void {
+		const dialogRef = this.dialog.open(ApplyDiscountComponent, {
+			data: product
+		});
+
+		dialogRef.afterClosed().pipe(
+			tap(discountApplied => this.store$.dispatch(ProductUpdateActions.UPDATE_PRODUCT_INIT({ productId: product.id, discountApplied })))
+		).subscribe();
 	}
 }

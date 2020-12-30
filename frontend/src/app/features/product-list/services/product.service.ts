@@ -22,8 +22,8 @@ export class ProductService {
 				id: i,
 				name: `Product name ${i}`,
 				description: `Product description ${i}`,
-				price: i,
-				isDiscountApplied: i % 2 === 0
+				originalPrice: i,
+				discount: i % 2 === 0 ? 15 : null
 			};
 
 			data.push(product);
@@ -36,6 +36,15 @@ export class ProductService {
 	}
 
 	public delete(id: number): Observable<void> {
+		this.store$.dispatch(LoadingSpinnerAction.LOADING_SPINNER_START());
+		return of(void 0)
+			.pipe(
+				delay(3000),
+				tap(() => this.store$.dispatch(LoadingSpinnerAction.LOADING_SPINNER_STOP()))
+			);
+	}
+
+	public updateDiscount(id: number, discountApplied: number): Observable<void> {
 		this.store$.dispatch(LoadingSpinnerAction.LOADING_SPINNER_START());
 		return of(void 0)
 			.pipe(

@@ -1,0 +1,18 @@
+.discount-container {
+	margin-top: 15px;
+	font-size: 1vw;
+	display: flex;
+	align-items: center;
+
+	mat-label {
+		margin-right: 15px;
+	}
+
+	mat-icon {
+		padding: 0 10px;
+	}
+
+	.strike {
+		text-decoration: line-through;
+	}
+}
