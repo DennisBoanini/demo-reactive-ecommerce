@@ -22,8 +22,4 @@ export class AppComponent implements OnInit {
 	public ngOnInit(): void {
 		this.isLoading$ = this.store$.select(isLoading);
 	}
-
-	public goHome(): void {
-		this.router.navigate(['']);
-	}
 }

@@ -15,12 +15,14 @@ import { PageNotFoundComponent } from './core/components/page-not-found/page-not
 import { LoadingComponent } from './core/components/loading/loading.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { metaReducers, ROOT_REDUCERS } from './store';
+import { ToolbarComponent } from './core/components/toolbar/toolbar.component';
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		PageNotFoundComponent,
-		LoadingComponent
+		LoadingComponent,
+		ToolbarComponent
 	],
 	imports: [
 		BrowserModule,
