@@ -24,10 +24,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProductUpdateEffects } from './store/effects/product-update.effects';
+import { ProductComponent } from './components/product/product.component';
 
 
 @NgModule({
-	declarations: [ProductListComponent, ApplyDiscountComponent],
+	declarations: [ProductListComponent, ApplyDiscountComponent, ProductComponent],
 	imports: [
 		CommonModule,
 		ProductListRoutingModule,
