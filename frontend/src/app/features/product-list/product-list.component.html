@@ -53,7 +53,7 @@
 	</div>
 	<mat-paginator class="paginator" [length]="datasource.data.length" [pageSize]="15"></mat-paginator>
 
-	<button mat-fab>
+	<button mat-fab (click)="addNewProduct()">
 		<mat-icon>add</mat-icon>
 	</button>
 </div>

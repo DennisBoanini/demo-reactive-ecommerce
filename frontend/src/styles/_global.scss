@@ -37,3 +37,9 @@
 .full-width {
 	width: 100%;
 }
+
+mat-form-field.required {
+	.mat-form-field-label::after {
+		content: " *";
+	}
+}

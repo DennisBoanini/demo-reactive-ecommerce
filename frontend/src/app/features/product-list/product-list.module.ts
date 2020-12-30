@@ -24,10 +24,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProductUpdateEffects } from './store/effects/product-update.effects';
+import { ProductComponent } from './components/product/product.component';
+import { ProductMapper } from './services/product.mapper';
+import { ProductInsertEffects } from './store/effects/product-insert.effects';
 
 
 @NgModule({
-	declarations: [ProductListComponent, ApplyDiscountComponent],
+	declarations: [ProductListComponent, ApplyDiscountComponent, ProductComponent],
 	imports: [
 		CommonModule,
 		ProductListRoutingModule,
@@ -39,7 +42,7 @@ import { ProductUpdateEffects } from './store/effects/product-update.effects';
 		MatIconModule,
 		MatCheckboxModule,
 		StoreModule.forFeature(fromProducts.productsFeatureKey, fromProducts.reducers, {metaReducers: fromProducts.metaReducers}),
-		EffectsModule.forFeature([ProductEffects, ProductDeleteEffects, ProductUpdateEffects]),
+		EffectsModule.forFeature([ProductEffects, ProductDeleteEffects, ProductUpdateEffects, ProductInsertEffects]),
 		MatButtonModule,
 		MatDialogModule,
 		UikitModule,
@@ -48,7 +51,8 @@ import { ProductUpdateEffects } from './store/effects/product-update.effects';
 		ReactiveFormsModule
 	],
 	providers: [
-		ProductService
+		ProductService,
+		ProductMapper
 	]
 })
 export class ProductListModule {

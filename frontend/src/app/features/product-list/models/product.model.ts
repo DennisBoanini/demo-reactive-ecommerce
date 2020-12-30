@@ -6,3 +6,5 @@ export interface Product {
 	discount: number;
 	quantity: number;
 }
+
+export type ProductSave = Omit<Product, 'id'>;
