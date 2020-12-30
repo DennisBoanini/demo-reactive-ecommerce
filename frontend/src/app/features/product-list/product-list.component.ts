@@ -24,7 +24,7 @@ import * as ProductUpdateActions from '../product-list/store/actions/product-upd
 })
 export class ProductListComponent {
 
-	public readonly displayedColumns: string[] = ['name', 'description', 'price', 'discount', 'actions'];
+	public readonly displayedColumns: string[] = ['name', 'description', 'price', 'discount', 'quantity', 'actions'];
 	public readonly datasource = new MatTableDataSource([]);
 	constructor(
 		productService: ProductService,

@@ -32,6 +32,12 @@
 				</td>
 			</ng-container>
 
+			<!-- Quantity Column -->
+			<ng-container matColumnDef="quantity">
+				<th *matHeaderCellDef mat-header-cell mat-sort-header>Quantity</th>
+				<td *matCellDef="let row" mat-cell>{{row.quantity}}</td>
+			</ng-container>
+
 			<!-- Actions Column -->
 			<ng-container matColumnDef="actions">
 				<th *matHeaderCellDef mat-header-cell></th>

@@ -23,7 +23,8 @@ export class ProductService {
 				name: `Product name ${i}`,
 				description: `Product description ${i}`,
 				originalPrice: i,
-				discount: i % 2 === 0 ? 15 : null
+				discount: i % 2 === 0 ? 15 : null,
+				quantity: i >= 0 && i <= 13 ? 3 : i >= 20 && i <= 33 ? 2 : 6
 			};
 
 			data.push(product);
