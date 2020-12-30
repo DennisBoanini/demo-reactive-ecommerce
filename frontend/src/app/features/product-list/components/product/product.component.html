@@ -1,1 +1,34 @@
-<p>product works!</p>
+<h2 mat-dialog-title>Add new product</h2>
+<mat-dialog-content [formGroup]="productForm">
+	<p>Please fill all the mandatory fields to add new product</p>
+	<mat-form-field class="full-width required">
+		<input matInput placeholder="Name" type="text" formControlName="name"/>
+		<mat-icon matSuffix></mat-icon>
+		<mat-error></mat-error>
+	</mat-form-field>
+
+	<mat-form-field class="full-width required">
+		<textarea matInput mat-autosize placeholder="Description" type="text" formControlName="description"></textarea>
+		<mat-icon matSuffix></mat-icon>
+	</mat-form-field>
+
+	<div class="form-part" style="display: flex;">
+		<mat-form-field class="full-width required">
+			<input matInput placeholder="Price" type="text" formControlName="price"/>
+			<mat-icon matSuffix></mat-icon>
+		</mat-form-field>
+		<mat-form-field class="full-width required">
+			<input matInput placeholder="Quantity" type="number" formControlName="quantity"/>
+			<mat-icon matSuffix></mat-icon>
+		</mat-form-field>
+		<mat-form-field class="full-width">
+			<input matInput placeholder="Discount" type="text" formControlName="discount"/>
+			<mat-icon matSuffix></mat-icon>
+		</mat-form-field>
+	</div>
+
+</mat-dialog-content>
+<mat-dialog-actions class="align-end">
+	<button mat-button [mat-dialog-close]="null">Cancel</button>
+	<button mat-button (click)="save()"  [disabled]="!productForm.valid">Save</button>
+</mat-dialog-actions>

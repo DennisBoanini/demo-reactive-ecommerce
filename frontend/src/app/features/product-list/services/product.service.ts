@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Product } from '../models/product.model';
+import { Product, ProductSave } from '../models/product.model';
 import { HttpClient } from '@angular/common/http';
 import { delay, tap } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
@@ -46,6 +46,15 @@ export class ProductService {
 	}
 
 	public updateDiscount(id: number, discountApplied: number): Observable<void> {
+		this.store$.dispatch(LoadingSpinnerAction.LOADING_SPINNER_START());
+		return of(void 0)
+			.pipe(
+				delay(3000),
+				tap(() => this.store$.dispatch(LoadingSpinnerAction.LOADING_SPINNER_STOP()))
+			);
+	}
+
+	public save(product: ProductSave): Observable<number> {
 		this.store$.dispatch(LoadingSpinnerAction.LOADING_SPINNER_START());
 		return of(void 0)
 			.pipe(

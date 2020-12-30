@@ -25,6 +25,7 @@ import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProductUpdateEffects } from './store/effects/product-update.effects';
 import { ProductComponent } from './components/product/product.component';
+import { ProductMapper } from './services/product.mapper';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { ProductComponent } from './components/product/product.component';
 		ReactiveFormsModule
 	],
 	providers: [
-		ProductService
+		ProductService,
+		ProductMapper
 	]
 })
 export class ProductListModule {

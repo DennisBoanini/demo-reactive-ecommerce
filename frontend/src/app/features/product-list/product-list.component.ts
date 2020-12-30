@@ -14,6 +14,8 @@ import { Product } from './models/product.model';
 import { AlertComponent } from '../../shared/uikit/components/alert/alert.component';
 import { ApplyDiscountComponent } from './components/apply-discount/apply-discount.component';
 import * as ProductUpdateActions from '../product-list/store/actions/product-update.actions';
+import { ProductComponent } from './components/product/product.component';
+import { isNil } from 'lodash';
 
 @Component({
 	selector: 'demo-product-list',
@@ -66,7 +68,27 @@ export class ProductListComponent {
 		});
 
 		dialogRef.afterClosed().pipe(
-			tap(discountApplied => this.store$.dispatch(ProductUpdateActions.UPDATE_PRODUCT_INIT({ productId: product.id, discountApplied })))
+			tap(discountApplied => {
+				if (isNil(discountApplied)) {
+					return;
+				}
+				this.store$.dispatch(ProductUpdateActions.UPDATE_PRODUCT_INIT({productId: product.id, discountApplied}));
+			})
 		).subscribe();
+	}
+
+	public addNewProduct(): void {
+		const dialogRef = this.dialog.open(ProductComponent);
+
+		dialogRef.afterClosed()
+			.pipe(
+				tap(product => {
+					if (isNil(product)) {
+						return;
+					}
+
+
+				})
+			).subscribe();
 	}
 }
