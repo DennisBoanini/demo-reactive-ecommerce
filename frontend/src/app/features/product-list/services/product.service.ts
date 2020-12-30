@@ -56,7 +56,7 @@ export class ProductService {
 
 	public save(product: ProductSave): Observable<number> {
 		this.store$.dispatch(LoadingSpinnerAction.LOADING_SPINNER_START());
-		return of(void 0)
+		return of(23)
 			.pipe(
 				delay(3000),
 				tap(() => this.store$.dispatch(LoadingSpinnerAction.LOADING_SPINNER_STOP()))

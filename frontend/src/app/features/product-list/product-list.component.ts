@@ -16,6 +16,7 @@ import { ApplyDiscountComponent } from './components/apply-discount/apply-discou
 import * as ProductUpdateActions from '../product-list/store/actions/product-update.actions';
 import { ProductComponent } from './components/product/product.component';
 import { isNil } from 'lodash';
+import * as ProductInsertActions from './store/actions/product-insert.actions';
 
 @Component({
 	selector: 'demo-product-list',
@@ -87,7 +88,7 @@ export class ProductListComponent {
 						return;
 					}
 
-
+					this.store$.dispatch(ProductInsertActions.INSERT_PRODUCTS_INIT({ product }));
 				})
 			).subscribe();
 	}

@@ -26,6 +26,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ProductUpdateEffects } from './store/effects/product-update.effects';
 import { ProductComponent } from './components/product/product.component';
 import { ProductMapper } from './services/product.mapper';
+import { ProductInsertEffects } from './store/effects/product-insert.effects';
 
 
 @NgModule({
@@ -41,7 +42,7 @@ import { ProductMapper } from './services/product.mapper';
 		MatIconModule,
 		MatCheckboxModule,
 		StoreModule.forFeature(fromProducts.productsFeatureKey, fromProducts.reducers, {metaReducers: fromProducts.metaReducers}),
-		EffectsModule.forFeature([ProductEffects, ProductDeleteEffects, ProductUpdateEffects]),
+		EffectsModule.forFeature([ProductEffects, ProductDeleteEffects, ProductUpdateEffects, ProductInsertEffects]),
 		MatButtonModule,
 		MatDialogModule,
 		UikitModule,
