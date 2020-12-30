@@ -1,5 +1,4 @@
 import { Component, ViewChild } from '@angular/core';
-import { ProductService } from './services/product.service';
 import { ProductState } from './store';
 import { Store } from '@ngrx/store';
 import * as ProductActions from './store/actions/product.actions';
@@ -14,7 +13,6 @@ import { AlertData } from '../../shared/uikit/models/alert-data.model';
 import { Product } from './models/product.model';
 import { AlertComponent } from '../../shared/uikit/components/alert/alert.component';
 import { ApplyDiscountComponent } from './components/apply-discount/apply-discount.component';
-import { FormBuilder } from '@angular/forms';
 import * as ProductUpdateActions from '../product-list/store/actions/product-update.actions';
 
 @Component({
@@ -27,10 +25,8 @@ export class ProductListComponent {
 	public readonly displayedColumns: string[] = ['name', 'description', 'price', 'discount', 'quantity', 'actions'];
 	public readonly datasource = new MatTableDataSource([]);
 	constructor(
-		productService: ProductService,
 		private readonly store$: Store<ProductState>,
-		private readonly dialog: MatDialog,
-		private readonly formBuilder: FormBuilder) {
+		private readonly dialog: MatDialog) {
 
 		this.store$.dispatch(ProductActions.LOAD_PRODUCTS_INIT({error: false, products: []}));
 		this.store$.select(getAllProducts).pipe(
