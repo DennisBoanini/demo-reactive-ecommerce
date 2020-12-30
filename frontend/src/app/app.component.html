@@ -1,7 +1,4 @@
-<mat-toolbar class="app-toolbar" color="primary">
-	<span class="clickable" (click)="goHome()">Demo Reactive ECommerce</span>
-	<span class="spacer"></span>
-</mat-toolbar>
+<demo-toolbar></demo-toolbar>
 
 <demo-loading [isLoading]="isLoading$ | async"></demo-loading>
 <div class="app-container" [class.loading]="isLoading$ | async">
