@@ -2,7 +2,7 @@ import { createAction, props } from '@ngrx/store';
 
 export const DELETE_PRODUCTS_INIT = createAction(
 	'[Product] Delete product',
-	props<{ id: number, deleting: boolean, error: boolean }>()
+	props<{ id: number }>()
 );
 
 export const DELETE_PRODUCTS_SUCCESS = createAction(

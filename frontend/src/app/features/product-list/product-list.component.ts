@@ -59,7 +59,7 @@ export class ProductListComponent {
 		dialogRef.afterClosed()
 			.pipe(
 				filter(Boolean),
-				tap(() => this.store$.dispatch(ProductDeleteActions.DELETE_PRODUCTS_INIT({ id: product.id, deleting: true, error: false })))
+				tap(() => this.store$.dispatch(ProductDeleteActions.DELETE_PRODUCTS_INIT({ id: product.id })))
 			).subscribe();
 	}
 

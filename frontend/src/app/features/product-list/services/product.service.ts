@@ -27,7 +27,7 @@ export class ProductService {
 
 	public delete(id: number): Observable<void> {
 		this.store$.dispatch(LoadingSpinnerAction.LOADING_SPINNER_START());
-		return this.http.delete<void>(this.baseUrl + '/' + id)
+		return this.http.delete<void>(`${this.baseUrl}/${id}`)
 			.pipe(
 				delay(3000),
 				tap(() => this.store$.dispatch(LoadingSpinnerAction.LOADING_SPINNER_STOP()))
@@ -36,7 +36,7 @@ export class ProductService {
 
 	public updateDiscount(product: Product): Observable<void> {
 		this.store$.dispatch(LoadingSpinnerAction.LOADING_SPINNER_START());
-		return this.http.put<void>(this.baseUrl + '/' + product.id, product)
+		return this.http.put<void>(`${this.baseUrl}/${product.id}`, product)
 			.pipe(
 				delay(3000),
 				tap(() => this.store$.dispatch(LoadingSpinnerAction.LOADING_SPINNER_STOP()))
