@@ -14,9 +14,9 @@ import { Product } from './models/product.model';
 import { AlertComponent } from '../../shared/uikit/components/alert/alert.component';
 import { ApplyDiscountComponent } from './components/apply-discount/apply-discount.component';
 import * as ProductUpdateActions from '../product-list/store/actions/product-update.actions';
-import { ProductComponent } from './components/product/product.component';
+import * as ProductInsertActions from '../product-list/store/actions/product-insert.actions';
 import { isNil } from 'lodash';
-import * as ProductInsertActions from './store/actions/product-insert.actions';
+import { ProductComponent } from './components/product/product.component';
 
 @Component({
 	selector: 'demo-product-list',
@@ -73,7 +73,8 @@ export class ProductListComponent {
 				if (isNil(discountApplied)) {
 					return;
 				}
-				this.store$.dispatch(ProductUpdateActions.UPDATE_PRODUCT_INIT({productId: product.id, discountApplied}));
+
+				this.store$.dispatch(ProductUpdateActions.UPDATE_PRODUCT_INIT({ product: { ...product, discount: discountApplied } }));
 			})
 		).subscribe();
 	}

@@ -18,8 +18,8 @@ export class ProductInsertEffects {
 			ofType(ProductInsertActions.INSERT_PRODUCTS_INIT),
 			exhaustMap((action) => this.productService.save(action.product)
 				.pipe(
-					map(productId => ProductInsertActions.INSERT_PRODUCTS_SUCCESS({productId, error: false})),
-					catchError(() => of(ProductInsertActions.INSERT_PRODUCTS_ERROR({error: true})))
+					map(product => ProductInsertActions.INSERT_PRODUCTS_SUCCESS({ product, error: false })),
+					catchError(() => of(ProductInsertActions.INSERT_PRODUCTS_ERROR({ error: true })))
 				)
 			)
 		)
