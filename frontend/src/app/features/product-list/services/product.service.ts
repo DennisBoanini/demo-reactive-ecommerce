@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Product, ProductSave } from '../models/product.model';
 import { HttpClient } from '@angular/common/http';
 import { delay, tap } from 'rxjs/operators';

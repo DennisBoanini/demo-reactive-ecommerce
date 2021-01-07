@@ -1,4 +1,4 @@
-import { createAction, props } from '@ngrx/store';
+import { createAction } from '@ngrx/store';
 
 export const LOADING_SPINNER_START = createAction(
 	'[Loading Spinner] Start loading spinner',

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Product, ProductSave } from '../models/product.model';
+import { ProductSave } from '../models/product.model';
 import { FormGroup } from '@angular/forms';
 
 @Injectable()

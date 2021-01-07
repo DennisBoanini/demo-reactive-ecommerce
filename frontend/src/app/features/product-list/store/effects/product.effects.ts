@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Actions, createEffect, Effect, ofType } from '@ngrx/effects';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { ProductService } from '../../services/product.service';
-import { catchError, exhaustMap, map, tap } from 'rxjs/operators';
+import { catchError, exhaustMap, map } from 'rxjs/operators';
 import { ProductState } from '../index';
 import { Store } from '@ngrx/store';
 import * as ProductActions from '../actions/product.actions';
