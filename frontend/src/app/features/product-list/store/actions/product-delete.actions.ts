@@ -7,10 +7,9 @@ export const DELETE_PRODUCTS_INIT = createAction(
 
 export const DELETE_PRODUCTS_SUCCESS = createAction(
 	'[Product] Delete product success',
-	props<{ deleting: boolean, error: boolean }>()
 );
 
 export const DELETE_PRODUCTS_ERROR = createAction(
 	'[Product] Delete product error',
-	props<{ deleting: boolean, error: boolean }>()
+	props<{ error: boolean }>()
 );

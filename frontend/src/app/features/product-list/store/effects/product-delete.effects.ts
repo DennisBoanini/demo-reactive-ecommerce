@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Actions, createEffect, Effect, ofType } from '@ngrx/effects';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
 import * as ProductDeleteActions from '../actions/product-delete.actions';
 import { catchError, exhaustMap, map } from 'rxjs/operators';
 import { of } from 'rxjs';
@@ -16,8 +16,8 @@ export class ProductDeleteEffects {
 			ofType(ProductDeleteActions.DELETE_PRODUCTS_INIT),
 			exhaustMap((action) => this.productService.delete(action.id)
 				.pipe(
-					map(() => ProductDeleteActions.DELETE_PRODUCTS_SUCCESS({deleting: false, error: false})),
-					catchError(() => of(ProductDeleteActions.DELETE_PRODUCTS_ERROR({deleting: false, error: true})))
+					map(() => ProductDeleteActions.DELETE_PRODUCTS_SUCCESS()),
+					catchError(() => of(ProductDeleteActions.DELETE_PRODUCTS_ERROR({  error: true })))
 				)
 			)
 		)
