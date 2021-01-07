@@ -24,7 +24,7 @@
     "@angular/router": "~11.0.4",
     "@ngrx/effects": "^10.1.2",
     "@ngrx/store": "^10.1.2",
-    "lodash": "^4.17.20",
+    "lodash-es": "^4.17.20",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

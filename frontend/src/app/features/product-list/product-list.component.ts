@@ -15,7 +15,7 @@ import { AlertComponent } from '../../shared/uikit/components/alert/alert.compon
 import { ApplyDiscountComponent } from './components/apply-discount/apply-discount.component';
 import * as ProductUpdateActions from '../product-list/store/actions/product-update.actions';
 import * as ProductInsertActions from '../product-list/store/actions/product-insert.actions';
-import { isNil } from 'lodash';
+import { isNil } from 'lodash-es';
 import { ProductComponent } from './components/product/product.component';
 
 @Component({
