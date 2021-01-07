@@ -11,7 +11,6 @@ import { ProductService } from '../../services/product.service';
 @Injectable()
 export class ProductDeleteEffects {
 
-	@Effect({dispatch: false})
 	deleteProduct$ = createEffect(() => this.actions$
 		.pipe(
 			ofType(ProductDeleteActions.DELETE_PRODUCTS_INIT),

@@ -10,13 +10,11 @@ import { of } from 'rxjs';
 @Injectable()
 export class ProductEffects {
 
-	@Effect({dispatch: false})
 	getAllProducts$ = createEffect(() => this.actions$
 		.pipe(
 			ofType(ProductActions.LOAD_PRODUCTS_INIT),
 			exhaustMap(() => this.productService.getAllProducts()
 				.pipe(
-					tap(t => console.log('j', t)),
 					map(products => ProductActions.LOAD_PRODUCTS_SUCCESS({error: false, products})),
 					catchError(() => of(ProductActions.LOAD_PRODUCTS_ERROR({error: true, products: []})))
 				)
