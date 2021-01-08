@@ -93,4 +93,21 @@ export class ProductListComponent {
 				})
 			).subscribe();
 	}
+
+	public editProduct(product: Product): void {
+		const dialogRef = this.dialog.open(ProductComponent, {
+			data: product
+		});
+
+		dialogRef.afterClosed()
+			.pipe(
+				tap(product => {
+					if (isNil(product)) {
+						return;
+					}
+
+					this.store$.dispatch(ProductUpdateActions.UPDATE_PRODUCT_INIT({ product }));
+				})
+			).subscribe();
+	}
 }

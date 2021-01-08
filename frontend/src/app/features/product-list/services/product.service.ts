@@ -34,7 +34,7 @@ export class ProductService {
 			);
 	}
 
-	public updateDiscount(product: Product): Observable<void> {
+	public update(product: Product): Observable<void> {
 		this.store$.dispatch(LoadingSpinnerAction.LOADING_SPINNER_START());
 		return this.http.put<void>(`${this.baseUrl}/${product.id}`, product)
 			.pipe(

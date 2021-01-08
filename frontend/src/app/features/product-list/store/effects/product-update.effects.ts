@@ -15,7 +15,7 @@ export class ProductUpdateEffects {
 	updateProduct$ = createEffect(() => this.actions$
 		.pipe(
 			ofType(ProductUpdateActions.UPDATE_PRODUCT_INIT),
-			exhaustMap((action) => this.productService.updateDiscount(action.product)
+			exhaustMap((action) => this.productService.update(action.product)
 				.pipe(
 					map(() => ProductUpdateActions.UPDATE_PRODUCT_SUCCESS({ error: false })),
 					catchError(() => of(ProductUpdateActions.UPDATE_PRODUCT_ERROR({ error: true })))
