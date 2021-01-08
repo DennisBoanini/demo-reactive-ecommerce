@@ -15,8 +15,8 @@ export class ProductEffects {
 			ofType(ProductActions.LOAD_PRODUCTS_INIT),
 			exhaustMap(() => this.productService.getAllProducts()
 				.pipe(
-					map(products => ProductActions.LOAD_PRODUCTS_SUCCESS({error: false, products})),
-					catchError(() => of(ProductActions.LOAD_PRODUCTS_ERROR({error: true, products: []})))
+					map(products => ProductActions.LOAD_PRODUCTS_SUCCESS({ error: false, products })),
+					catchError(() => of(ProductActions.LOAD_PRODUCTS_ERROR({ error: true })))
 				)
 			)
 		)

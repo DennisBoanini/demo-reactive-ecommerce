@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product, ProductSave } from '../models/product.model';
 import { HttpClient } from '@angular/common/http';
-import { delay, tap } from 'rxjs/operators';
+import { delay, finalize } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../store';
 import * as LoadingSpinnerAction from '../../../store/loading-spinner/loading-spinner.actions';
@@ -21,7 +21,7 @@ export class ProductService {
 
 		return this.http.get<Product[]>(this.baseUrl).pipe(
 			delay(3000),
-			tap(() => this.store$.dispatch(LoadingSpinnerAction.LOADING_SPINNER_STOP()))
+			finalize(() => this.store$.dispatch(LoadingSpinnerAction.LOADING_SPINNER_STOP()))
 		);
 	}
 
@@ -30,7 +30,7 @@ export class ProductService {
 		return this.http.delete<void>(`${this.baseUrl}/${id}`)
 			.pipe(
 				delay(3000),
-				tap(() => this.store$.dispatch(LoadingSpinnerAction.LOADING_SPINNER_STOP()))
+				finalize(() => this.store$.dispatch(LoadingSpinnerAction.LOADING_SPINNER_STOP()))
 			);
 	}
 
@@ -39,7 +39,7 @@ export class ProductService {
 		return this.http.put<void>(`${this.baseUrl}/${product.id}`, product)
 			.pipe(
 				delay(3000),
-				tap(() => this.store$.dispatch(LoadingSpinnerAction.LOADING_SPINNER_STOP()))
+				finalize(() => this.store$.dispatch(LoadingSpinnerAction.LOADING_SPINNER_STOP()))
 			);
 	}
 
@@ -48,7 +48,7 @@ export class ProductService {
 		return this.http.post<Product>(this.baseUrl, product)
 			.pipe(
 				delay(3000),
-				tap(() => this.store$.dispatch(LoadingSpinnerAction.LOADING_SPINNER_STOP()))
+				finalize(() => this.store$.dispatch(LoadingSpinnerAction.LOADING_SPINNER_STOP()))
 			);
 	}
 }

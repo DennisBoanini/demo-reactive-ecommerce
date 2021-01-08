@@ -31,7 +31,7 @@ export class ProductListComponent {
 		private readonly store$: Store<ProductState>,
 		private readonly dialog: MatDialog) {
 
-		this.store$.dispatch(ProductActions.LOAD_PRODUCTS_INIT({error: false, products: []}));
+		this.store$.dispatch(ProductActions.LOAD_PRODUCTS_INIT());
 		this.store$.select(getAllProducts).pipe(
 			tap(products => this.datasource.data = products)
 		).subscribe();
