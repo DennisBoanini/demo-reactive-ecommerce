@@ -3,7 +3,7 @@ import { Product } from '../../models/product.model';
 
 export const UPDATE_PRODUCT_INIT = createAction(
 	'[ProductUpdate] Update product init',
-	props<{ productId: number, discountApplied: number }>()
+	props<{ product: Product }>()
 );
 
 export const UPDATE_PRODUCT_SUCCESS = createAction(

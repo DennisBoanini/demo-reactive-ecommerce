@@ -14,7 +14,7 @@ export const INITIAL_STATE: ProductsState = {
 
 export const productReducer = createReducer(
 	INITIAL_STATE,
-	on(ProductActions.LOAD_PRODUCTS_INIT, (state, action) => ( {...state, products: action.products} )),
-	on(ProductActions.LOAD_PRODUCTS_SUCCESS, (state, action) => ( {...state, products: [...action.products], error: false} )),
-	on(ProductActions.LOAD_PRODUCTS_ERROR, (state, action) => ( {...state, products: [], error: true} ))
+	on(ProductActions.LOAD_PRODUCTS_INIT, (state, action) => ( { ...state } )),
+	on(ProductActions.LOAD_PRODUCTS_SUCCESS, (state, action) => ( { ...state, products: [...action.products], error: false } )),
+	on(ProductActions.LOAD_PRODUCTS_ERROR, (state, action) => ( { ...state, error: true } ))
 );

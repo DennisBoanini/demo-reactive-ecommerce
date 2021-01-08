@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ValidatorUtils } from '../../../../core/utils/validator-utils';
 import { ProductMapper } from '../../services/product.mapper';

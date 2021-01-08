@@ -1,4 +1,4 @@
-import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { createSelector } from '@ngrx/store';
 import { LoadingSpinnerState } from './loading-spinner.reducer';
 import { AppState } from '../index';
 

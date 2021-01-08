@@ -17,16 +17,8 @@ import { Component, Input, OnInit } from '@angular/core';
 		}
 	`]
 })
-export class LoadingComponent implements OnInit {
+export class LoadingComponent {
 
 	@Input()
 	public isLoading: boolean;
-
-	constructor() {
-	}
-
-	ngOnInit(): void {
-		console.log('SPINNER IS ', this.isLoading);
-	}
-
 }

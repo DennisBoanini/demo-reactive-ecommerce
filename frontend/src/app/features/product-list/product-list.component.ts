@@ -14,9 +14,9 @@ import { Product } from './models/product.model';
 import { AlertComponent } from '../../shared/uikit/components/alert/alert.component';
 import { ApplyDiscountComponent } from './components/apply-discount/apply-discount.component';
 import * as ProductUpdateActions from '../product-list/store/actions/product-update.actions';
+import * as ProductInsertActions from '../product-list/store/actions/product-insert.actions';
+import { isNil } from 'lodash-es';
 import { ProductComponent } from './components/product/product.component';
-import { isNil } from 'lodash';
-import * as ProductInsertActions from './store/actions/product-insert.actions';
 
 @Component({
 	selector: 'demo-product-list',
@@ -31,7 +31,7 @@ export class ProductListComponent {
 		private readonly store$: Store<ProductState>,
 		private readonly dialog: MatDialog) {
 
-		this.store$.dispatch(ProductActions.LOAD_PRODUCTS_INIT({error: false, products: []}));
+		this.store$.dispatch(ProductActions.LOAD_PRODUCTS_INIT());
 		this.store$.select(getAllProducts).pipe(
 			tap(products => this.datasource.data = products)
 		).subscribe();
@@ -59,7 +59,7 @@ export class ProductListComponent {
 		dialogRef.afterClosed()
 			.pipe(
 				filter(Boolean),
-				tap(() => this.store$.dispatch(ProductDeleteActions.DELETE_PRODUCTS_INIT({id: product.id, deleting: true, error: false})))
+				tap(() => this.store$.dispatch(ProductDeleteActions.DELETE_PRODUCTS_INIT({ id: product.id })))
 			).subscribe();
 	}
 
@@ -73,7 +73,8 @@ export class ProductListComponent {
 				if (isNil(discountApplied)) {
 					return;
 				}
-				this.store$.dispatch(ProductUpdateActions.UPDATE_PRODUCT_INIT({productId: product.id, discountApplied}));
+
+				this.store$.dispatch(ProductUpdateActions.UPDATE_PRODUCT_INIT({ product: { ...product, discount: discountApplied } }));
 			})
 		).subscribe();
 	}

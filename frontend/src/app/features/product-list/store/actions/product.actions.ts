@@ -2,8 +2,7 @@ import { createAction, props } from '@ngrx/store';
 import { Product } from '../../models/product.model';
 
 export const LOAD_PRODUCTS_INIT = createAction(
-	'[Product] Load all Products',
-	props<{ products: Product[], error: boolean }>()
+	'[Product] Load all Products'
 );
 
 export const LOAD_PRODUCTS_SUCCESS = createAction(
@@ -13,5 +12,5 @@ export const LOAD_PRODUCTS_SUCCESS = createAction(
 
 export const LOAD_PRODUCTS_ERROR = createAction(
 	'[Product] Load Products error',
-	props<{ products: Product[], error: boolean }>()
+	props<{ error: boolean }>()
 );
