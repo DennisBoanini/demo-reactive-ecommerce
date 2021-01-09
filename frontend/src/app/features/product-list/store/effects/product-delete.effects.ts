@@ -20,7 +20,7 @@ export class ProductDeleteEffects {
 					catchError(() => of(ProductDeleteActions.DELETE_PRODUCTS_ERROR({  error: true })))
 				)
 			)
-		)
+		), { dispatch: false }
 	);
 
 	constructor(

@@ -5,7 +5,7 @@
 
 	// All fab buttons should be placed in bottom right corner
 	button.mat-fab {
-		position: absolute;
+		position: fixed;
 		bottom: 0;
 		right: 0;
 		margin: 15px;
