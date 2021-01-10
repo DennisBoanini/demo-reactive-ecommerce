@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Product } from '../models/product.model';
+import { Product, ProductSave } from '../models/product.model';
 
 export const loadProductsInit = createAction(
 	'[Product load] Start loading products'
@@ -29,3 +29,18 @@ export const deleteProductFail = createAction(
 	'[Delete product] Product delete failed',
 	props<{ error: boolean }>()
 );
+
+export const createProductInit = createAction(
+	'[Create product] Creating new product',
+	props<{ product: ProductSave }>()
+);
+
+export const createProductSuccess = createAction(
+	'[Create product] Product created successfully',
+	props<{ product: Product }>()
+);
+
+export const createProductFail = createAction(
+	'[Create product] Product create failed',
+	props<{ error: boolean }>()
+)

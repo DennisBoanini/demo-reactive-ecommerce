@@ -13,7 +13,7 @@ import { ProductComponent } from './components/product/product.component';
 import { ProductService } from './services/product.service';
 import { ProductState } from './store/product.reducer';
 import { Store } from '@ngrx/store';
-import { deleteProductInit, loadProductsInit } from './store/product.action';
+import { createProductInit, deleteProductInit, loadProductsInit } from './store/product.action';
 import { getProducts } from './store/product.selector';
 
 @Component({
@@ -87,6 +87,7 @@ export class ProductListComponent {
 						return;
 					}
 
+					this.store$.dispatch(createProductInit({ product }));
 				})
 			).subscribe();
 	}

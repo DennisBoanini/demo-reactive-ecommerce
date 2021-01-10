@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import {
+	createProductFail,
+	createProductInit,
+	createProductSuccess,
 	deleteProductFail,
 	deleteProductInit,
 	deleteProductSuccess,
@@ -31,6 +34,17 @@ export class ProductEffect {
 			.pipe(
 				map(() => deleteProductSuccess({ productId })),
 				catchError(() => deleteProductFail)
+			)
+		)
+	));
+
+	addProduct$ = createEffect(() => this.actions$.pipe(
+		ofType(createProductInit),
+		map(action => action.product),
+		concatMap(product => this.productService.save(product)
+			.pipe(
+				map(productSaved => createProductSuccess({ product: productSaved })),
+				catchError(() => createProductFail)
 			)
 		)
 	));
