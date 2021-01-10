@@ -13,7 +13,7 @@ import { ProductComponent } from './components/product/product.component';
 import { ProductService } from './services/product.service';
 import { ProductState } from './store/product.reducer';
 import { Store } from '@ngrx/store';
-import { loadProductsInit } from './store/product.action';
+import { deleteProductInit, loadProductsInit } from './store/product.action';
 import { getProducts } from './store/product.selector';
 
 @Component({
@@ -58,6 +58,7 @@ export class ProductListComponent {
 		dialogRef.afterClosed()
 			.pipe(
 				filter(Boolean),
+				tap(() => this.store$.dispatch(deleteProductInit({ productId: product.id })))
 			).subscribe();
 	}
 

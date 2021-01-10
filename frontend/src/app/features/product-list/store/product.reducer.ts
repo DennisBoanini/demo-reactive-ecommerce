@@ -1,6 +1,13 @@
 import { Product } from '../models/product.model';
 import { createReducer, on } from '@ngrx/store';
-import { loadProductsFail, loadProductsInit, loadProductsSuccess } from './product.action';
+import {
+	deleteProductFail,
+	deleteProductInit,
+	deleteProductSuccess,
+	loadProductsFail,
+	loadProductsInit,
+	loadProductsSuccess
+} from './product.action';
 
 export interface ProductState {
 	products: Product[];
@@ -14,21 +21,40 @@ export const initialState: ProductState = {
 
 export const productReducer = createReducer(
 	initialState,
-	on(loadProductsInit, (state, actions) => (
+	on(loadProductsInit, (state, action) => (
 		{
 			...state
 		}
 	)),
-	on(loadProductsSuccess, (state, actions) => (
+	on(loadProductsSuccess, (state, action) => (
 		{
 			...state,
-			products: [...actions.products]
+			products: [...action.products]
 		}
 	)),
-	on(loadProductsFail, (state, actions) => (
+	on(loadProductsFail, (state, action) => (
 		{
 			...state,
-			error: actions.error
+			error: action.error
+		}
+	)),
+
+	// Delete reducers
+	on(deleteProductInit, (state, action) => (
+		{
+			...state
+		}
+	)),
+	on(deleteProductSuccess, (state, action) => (
+		{
+			...state,
+			products: [...state.products.filter(product => product.id !== action.productId)]
+		}
+	)),
+	on(deleteProductFail, (state, action) => (
+		{
+			...state,
+			error: action.error
 		}
 	))
 );

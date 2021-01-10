@@ -14,3 +14,18 @@ export const loadProductsFail = createAction(
 	'[Product load] Loading products failed',
 	props<{ error: boolean }>()
 );
+
+export const deleteProductInit = createAction(
+	'[Delete product] Deleting product',
+	props<{ productId: number }>()
+);
+
+export const deleteProductSuccess = createAction(
+	'[Delete product] Product successfully deleted',
+	props<{ productId: number }>()
+);
+
+export const deleteProductFail = createAction(
+	'[Delete product] Product delete failed',
+	props<{ error: boolean }>()
+);
