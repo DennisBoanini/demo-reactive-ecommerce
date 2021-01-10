@@ -73,6 +73,13 @@ export class ProductListComponent {
 					return;
 				}
 
+				const productWithDiscount = {
+					...product,
+					discount: discountApplied
+				};
+
+				this.store$.dispatch(updateProductInit({ product: productWithDiscount }));
+
 			})
 		).subscribe();
 	}
