@@ -11,22 +11,20 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ProductService } from './services/product.service';
 import { HttpClientModule } from '@angular/common/http';
-import { StoreModule } from '@ngrx/store';
-import * as fromProducts from './store';
-import { EffectsModule } from '@ngrx/effects';
-import { ProductEffects } from './store/effects/product.effects';
 import { MatButtonModule } from '@angular/material/button';
 import { UikitModule } from '../../shared/uikit/uikit.module';
 import { MatDialogModule } from '@angular/material/dialog';
-import { ProductDeleteEffects } from './store/effects/product-delete.effects';
 import { ApplyDiscountComponent } from './components/apply-discount/apply-discount.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ProductUpdateEffects } from './store/effects/product-update.effects';
 import { ProductComponent } from './components/product/product.component';
 import { ProductMapper } from './services/product.mapper';
-import { ProductInsertEffects } from './store/effects/product-insert.effects';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { ProductEffect } from './store/product.effect';
+import { productFeature } from './store/product.selector';
+import { productReducer } from './store/product.reducer';
 
 
 @NgModule({
@@ -41,8 +39,8 @@ import { ProductInsertEffects } from './store/effects/product-insert.effects';
 		MatSortModule,
 		MatIconModule,
 		MatCheckboxModule,
-		StoreModule.forFeature(fromProducts.productsFeatureKey, fromProducts.reducers, {metaReducers: fromProducts.metaReducers}),
-		EffectsModule.forFeature([ProductEffects, ProductDeleteEffects, ProductUpdateEffects, ProductInsertEffects]),
+		StoreModule.forFeature(productFeature, productReducer),
+		EffectsModule.forFeature([ProductEffect]),
 		MatButtonModule,
 		MatDialogModule,
 		UikitModule,
