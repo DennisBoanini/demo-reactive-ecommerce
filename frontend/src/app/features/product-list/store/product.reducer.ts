@@ -1,6 +1,7 @@
 import { Product } from '../models/product.model';
 import { createReducer, on } from '@ngrx/store';
 import {
+	createProductFail,
 	createProductInit,
 	createProductSuccess,
 	deleteProductFail,
@@ -70,6 +71,12 @@ export const productReducer = createReducer(
 		{
 			...state,
 			products: [...state.products.concat(action.product)]
+		}
+	)),
+	on(createProductFail, (state, action) => (
+		{
+			...state,
+			error: action.error
 		}
 	)),
 );
