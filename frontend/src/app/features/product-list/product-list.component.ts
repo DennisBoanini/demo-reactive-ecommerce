@@ -1,9 +1,4 @@
 import { Component, ViewChild } from '@angular/core';
-import { ProductState } from './store';
-import { Store } from '@ngrx/store';
-import * as ProductActions from './store/actions/product.actions';
-import * as ProductDeleteActions from './store/actions/product-delete.actions';
-import { getAllProducts } from './store/selector/product.selector';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { filter, tap } from 'rxjs/operators';
@@ -13,10 +8,13 @@ import { AlertData } from '../../shared/uikit/models/alert-data.model';
 import { Product } from './models/product.model';
 import { AlertComponent } from '../../shared/uikit/components/alert/alert.component';
 import { ApplyDiscountComponent } from './components/apply-discount/apply-discount.component';
-import * as ProductUpdateActions from '../product-list/store/actions/product-update.actions';
-import * as ProductInsertActions from '../product-list/store/actions/product-insert.actions';
 import { isNil } from 'lodash-es';
 import { ProductComponent } from './components/product/product.component';
+import { ProductService } from './services/product.service';
+import { ProductState } from './store/product.reducer';
+import { Store } from '@ngrx/store';
+import { createProductInit, deleteProductInit, loadProductsInit, updateProductInit } from './store/product.action';
+import { getProducts } from './store/product.selector';
 
 @Component({
 	selector: 'demo-product-list',
@@ -29,10 +27,11 @@ export class ProductListComponent {
 	public readonly datasource = new MatTableDataSource([]);
 	constructor(
 		private readonly store$: Store<ProductState>,
+		private readonly productService: ProductService,
 		private readonly dialog: MatDialog) {
 
-		this.store$.dispatch(ProductActions.LOAD_PRODUCTS_INIT());
-		this.store$.select(getAllProducts).pipe(
+		this.store$.dispatch(loadProductsInit());
+		this.store$.select(getProducts).pipe(
 			tap(products => this.datasource.data = products)
 		).subscribe();
 	}
@@ -59,7 +58,7 @@ export class ProductListComponent {
 		dialogRef.afterClosed()
 			.pipe(
 				filter(Boolean),
-				tap(() => this.store$.dispatch(ProductDeleteActions.DELETE_PRODUCTS_INIT({ id: product.id })))
+				tap(() => this.store$.dispatch(deleteProductInit({ productId: product.id })))
 			).subscribe();
 	}
 
@@ -74,7 +73,13 @@ export class ProductListComponent {
 					return;
 				}
 
-				this.store$.dispatch(ProductUpdateActions.UPDATE_PRODUCT_INIT({ product: { ...product, discount: discountApplied } }));
+				const productWithDiscount = {
+					...product,
+					discount: discountApplied
+				};
+
+				this.store$.dispatch(updateProductInit({ product: productWithDiscount }));
+
 			})
 		).subscribe();
 	}
@@ -89,7 +94,7 @@ export class ProductListComponent {
 						return;
 					}
 
-					this.store$.dispatch(ProductInsertActions.INSERT_PRODUCTS_INIT({ product }));
+					this.store$.dispatch(createProductInit({ product }));
 				})
 			).subscribe();
 	}
@@ -106,7 +111,7 @@ export class ProductListComponent {
 						return;
 					}
 
-					this.store$.dispatch(ProductUpdateActions.UPDATE_PRODUCT_INIT({ product }));
+					this.store$.dispatch(updateProductInit({ product }));
 				})
 			).subscribe();
 	}
