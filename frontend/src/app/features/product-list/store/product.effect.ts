@@ -9,7 +9,10 @@ import {
 	deleteProductSuccess,
 	loadProductsFail,
 	loadProductsInit,
-	loadProductsSuccess
+	loadProductsSuccess,
+	updateProductFail,
+	updateProductInit,
+	updateProductSuccess
 } from './product.action';
 import { catchError, concatMap, map } from 'rxjs/operators';
 import { ProductService } from '../services/product.service';
@@ -45,6 +48,17 @@ export class ProductEffect {
 			.pipe(
 				map(productSaved => createProductSuccess({ product: productSaved })),
 				catchError(() => createProductFail)
+			)
+		)
+	));
+
+	updateProduct$ = createEffect(() => this.actions$.pipe(
+		ofType(updateProductInit),
+		map(action => action.product),
+		concatMap(product => this.productService.update(product)
+			.pipe(
+				map(() => updateProductSuccess({ product })),
+				catchError(() => updateProductFail)
 			)
 		)
 	));

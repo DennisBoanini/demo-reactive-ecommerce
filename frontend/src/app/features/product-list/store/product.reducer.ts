@@ -9,7 +9,10 @@ import {
 	deleteProductSuccess,
 	loadProductsFail,
 	loadProductsInit,
-	loadProductsSuccess
+	loadProductsSuccess,
+	updateProductFail,
+	updateProductInit,
+	updateProductSuccess
 } from './product.action';
 
 export interface ProductState {
@@ -74,6 +77,25 @@ export const productReducer = createReducer(
 		}
 	)),
 	on(createProductFail, (state, action) => (
+		{
+			...state,
+			error: action.error
+		}
+	)),
+
+	// Update product
+	on(updateProductInit, (state, action) => (
+		{
+			...state
+		}
+	)),
+	on(updateProductSuccess, (state, action) => (
+		{
+			...state,
+			products: [...state.products.filter(p => p.id !== action.product.id).concat(action.product)]
+		}
+	)),
+	on(updateProductFail, (state, action) => (
 		{
 			...state,
 			error: action.error

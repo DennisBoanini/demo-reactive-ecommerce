@@ -43,4 +43,19 @@ export const createProductSuccess = createAction(
 export const createProductFail = createAction(
 	'[Create product] Product create failed',
 	props<{ error: boolean }>()
-)
+);
+
+export const updateProductInit = createAction(
+	'[Update product] Updating product',
+	props<{ product: Product }>()
+);
+
+export const updateProductSuccess = createAction(
+	'[Update product] Product successfully updated',
+	props<{ product: Product }>()
+);
+
+export const updateProductFail = createAction(
+	'[Update product] Update product failed',
+	props<{ error: boolean }>()
+);
