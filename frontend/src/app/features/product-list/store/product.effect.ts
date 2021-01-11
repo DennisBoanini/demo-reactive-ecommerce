@@ -32,8 +32,7 @@ export class ProductEffect {
 
 	deleteProduct$ = createEffect(() => this.actions$.pipe(
 		ofType(deleteProductInit),
-		map(action => action.productId),
-		concatMap(productId => this.productService.delete(productId)
+		concatMap(({ productId }) => this.productService.delete(productId)
 			.pipe(
 				map(() => deleteProductSuccess({ productId })),
 				catchError(() => deleteProductFail)
@@ -43,8 +42,7 @@ export class ProductEffect {
 
 	addProduct$ = createEffect(() => this.actions$.pipe(
 		ofType(createProductInit),
-		map(action => action.product),
-		concatMap(product => this.productService.save(product)
+		concatMap(({ product }) => this.productService.save(product)
 			.pipe(
 				map(productSaved => createProductSuccess({ product: productSaved })),
 				catchError(() => createProductFail)
@@ -54,8 +52,7 @@ export class ProductEffect {
 
 	updateProduct$ = createEffect(() => this.actions$.pipe(
 		ofType(updateProductInit),
-		map(action => action.product),
-		concatMap(product => this.productService.update(product)
+		concatMap(({ product }) => this.productService.update(product)
 			.pipe(
 				map(() => updateProductSuccess({ product })),
 				catchError(() => updateProductFail)
